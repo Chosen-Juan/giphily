@@ -8,6 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App {
+  text-align: center;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -20,7 +24,7 @@ code {
   -moz-column-count:    5;
   -moz-column-gap:      0px;
   column-count:         5;
-  column-gap:           0px;  
+  column-gap:           0px;
 }
 
 .gif-container img {

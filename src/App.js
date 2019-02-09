@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-
-import Search from './components/Search';
-
-import './App.css';
 import 'bulma';
+
+import Search from './modules/search/Search';
+import GifList from './modules/gifList/GifList';
 
 class App extends Component {
   render() {
@@ -11,6 +10,7 @@ class App extends Component {
       <div className="App">
         <h1>Giphily</h1>
         <Search />
+        <GifList />
       </div>
     );
   }

@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export class Gif extends Component {
   render() {
     const { gif } = this.props;
     return (
-      <img src={gif.images.fixed_height.url} alt={gif.title} />
+      <img src={gif.images.original.url} alt={gif.title} />
     );
   }
 }
 
-export default Gif
+export default Gif;

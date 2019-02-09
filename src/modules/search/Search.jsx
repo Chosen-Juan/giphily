@@ -1,34 +1,25 @@
 import React, { Component } from 'react';
-import Giphy from '../common/Giphy';
-import { Gif } from './Gif';
+import { connect } from 'react-redux';
+
+import { fetchGifs } from './SearchActions';
 
 export class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: '',
-      results: []
+      query: ''
     };
     this.onInputChange = this.onInputChange.bind(this);
-    this.renderGifs = this.renderGifs.bind(this);
   }
 
   onInputChange(event) {
     const query = event.target.value;
-    const params = { q: query };
-    Giphy.get('/search', { params })
-      .then(res => this.setState({ results: res.data.data }))
-      .catch(this.setState({ results: [] }));
     this.setState({ query });
-  }
-
-  renderGifs() {
-    return this.state.results.map(i => {
-      return <Gif gif={i} key={i.id} />;
-    });
+    this.props.fetchGifs(query);
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <input
@@ -38,12 +29,17 @@ export class Search extends Component {
           value={this.state.query}
           onChange={this.onInputChange}
         />
-        <div className='gif-container'>
-          {this.renderGifs()}
-        </div>
       </div>
     );
   }
 }
 
-export default Search;
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapDispatchToProps = {
+  fetchGifs
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
