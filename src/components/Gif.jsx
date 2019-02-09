@@ -4,10 +4,8 @@ export class Gif extends Component {
   render() {
     const { gif } = this.props;
     return (
-      <div className='column is-one-quarter'>
-        <iframe src={gif.embed_url} alt={gif.title} />
-      </div>
-    )
+      <img src={gif.images.fixed_height.url} alt={gif.title} />
+    );
   }
 }
 

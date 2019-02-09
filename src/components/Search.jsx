@@ -10,6 +10,7 @@ export class Search extends Component {
       results: []
     };
     this.onInputChange = this.onInputChange.bind(this);
+    this.renderGifs = this.renderGifs.bind(this);
   }
 
   onInputChange(event) {
@@ -37,7 +38,7 @@ export class Search extends Component {
           value={this.state.query}
           onChange={this.onInputChange}
         />
-        <div className='columns is-multiline'>
+        <div className='gif-container'>
           {this.renderGifs()}
         </div>
       </div>
