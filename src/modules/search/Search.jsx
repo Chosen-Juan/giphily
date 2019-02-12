@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchGifs } from './SearchActions';
+import './styles.scss';
 
 export class Search extends Component {
+  state = {
+    query: ''
+  };
+
   constructor(props) {
     super(props);
-    this.state = {
-      query: ''
-    };
     this.onInputChange = this.onInputChange.bind(this);
   }
 
@@ -19,9 +21,8 @@ export class Search extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
-      <div>
+      <div className='search-bar'>
         <input
           className='input'
           type='text'

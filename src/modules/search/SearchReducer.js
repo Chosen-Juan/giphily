@@ -9,7 +9,7 @@ const initialState = {
   query: '',
   loading: false,
   error: null
-}
+};
 
 export default function SearchReducer (state = initialState, action) {
   switch(action.type) {

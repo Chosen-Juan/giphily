@@ -1,0 +1,19 @@
+.collection {
+  background-color: aliceblue;
+  position: fixed;
+  padding: 5px;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  .hidden {
+
+  }
+
+  .gif {
+    display: inline-block;
+    height: 5vh;
+    max-width: 100%;
+  }
+}

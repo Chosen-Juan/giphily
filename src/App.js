@@ -3,14 +3,18 @@ import 'bulma';
 
 import Search from './modules/search/Search';
 import GifList from './modules/gifList/GifList';
+import Collection from './modules/collection/Collection';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1>Giphily</h1>
-        <Search />
+      <div className='App'>
+        <section className='search'>
+          <h1 className='app-title'>Giphily</h1>
+          <Search />
+        </section>
         <GifList />
+        <Collection />
       </div>
     );
   }

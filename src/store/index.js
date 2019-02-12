@@ -1,13 +1,17 @@
 import thunk from 'redux-thunk';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
 import searchReducer from '../modules/search/SearchReducer';
+import collectionReducer from '../modules/collection/CollectionReducer';
 
 const rootReducer = combineReducers({
-  search: searchReducer
+  searchReducer,
+  collectionReducer
 });
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default createStore(
   rootReducer,
-  applyMiddleware(thunk)
+  composeEnhancers(applyMiddleware(thunk))
 );

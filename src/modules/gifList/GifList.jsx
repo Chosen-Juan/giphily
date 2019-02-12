@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Gif from '../../components/Gif';
+import Gif from './Gif';
+import './styles.scss';
 
 export class GifList extends Component {
 
@@ -23,10 +24,10 @@ export class GifList extends Component {
       </div>
     );
   }
-}
-const mapStateToProps = state => {
-  console.log(state)
-  return { gifList: state.search.items };
 };
+
+const mapStateToProps = state => ({
+  gifList: state.searchReducer.items
+});
 
 export default connect(mapStateToProps)(GifList);
