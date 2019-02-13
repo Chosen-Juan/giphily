@@ -12,8 +12,11 @@ export default function collectionReducer(state = initialState, action) {
   switch(action.type) {
 
     case ADD_GIF_TO_COLLECTION: {
+      const { gif } = action.payload;
       const items = [...state.items];
-      items.push(action.payload.gif);
+      const existing = items.find(i => i === gif);
+      if(!existing)
+        items.push(gif);
       return {
         ...state,
         items
@@ -21,8 +24,7 @@ export default function collectionReducer(state = initialState, action) {
     }
 
     case REMOVE_GIF_FROM_COLLECTION: {
-      const items = [...state.items];
-      items.splice(action.payload.index, 1);
+      const items = state.items.filter(i => i.id !== action.payload.id);
       return {
         ...state,
         items

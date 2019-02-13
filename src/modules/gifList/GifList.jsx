@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Gif from './Gif';
 import './styles.scss';
+import { addGifToCollection } from '../collection/CollectionActions';
 
 export class GifList extends Component {
 
@@ -12,8 +13,11 @@ export class GifList extends Component {
   }
 
   renderGifs() {
-    return this.props.gifList.map(i => {
-      return <Gif gif={i} key={i.id} />;
+    const { addGifToCollectionDispatcher } = this.props;
+    return this.props.gifList.map(gif => {
+      return <div className='gif-button' onClick={() => addGifToCollectionDispatcher(gif)}>
+        <Gif gif={gif} key={gif.id} />
+      </div>;
     });
   }
 
@@ -30,4 +34,8 @@ const mapStateToProps = state => ({
   gifList: state.searchReducer.items
 });
 
-export default connect(mapStateToProps)(GifList);
+const mapDispatchToProps = dispatch => ({
+  addGifToCollectionDispatcher: gif => dispatch(addGifToCollection(gif))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GifList);

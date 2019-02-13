@@ -6,7 +6,7 @@ export const addGifToCollection = gif => ({
   payload: { gif }
 });
 
-export const removeGifFromCollection = index => ({
+export const removeGifFromCollection = id => ({
   type: REMOVE_GIF_FROM_COLLECTION,
-  payload: { index }
+  payload: { id }
 });

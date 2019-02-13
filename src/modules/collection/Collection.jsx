@@ -8,17 +8,17 @@ import './styles.scss';
 
 export class Collection extends Component {
 
-
-
-  renderGifs(gifList) {
-    return gifList.map((gif, index) => {
+  renderGifs(collection) {
+    return collection.map(gif => {
       const removeFromCollection = () => {
-        this.props.removeGifFromCollectionDispatcher(index);
+        this.props.removeGifFromCollectionDispatcher(gif.id);
       };
       return (
-        <div key={index}>
+        <div key={gif.id} className='gif-wrap'>
+          <div className='gif-button' onClick={removeFromCollection}>
+            <span>Remove</span>
+          </div>
           <Gif gif={gif} />
-          <button onClick={removeFromCollection}>REMOVE</button>
         </div>
       );
     });
@@ -26,9 +26,11 @@ export class Collection extends Component {
 
   render() {
     return (
-      <section className='collection'>
-          <CollectionDropdown />
-          {this.renderGifs(this.props.collection)}
+      <section className='collection-container'>
+        <CollectionDropdown />
+        <div className='collection'>
+            {this.renderGifs(this.props.collection)}
+        </div>
       </section>
     );
   }

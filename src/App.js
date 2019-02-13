@@ -14,6 +14,7 @@ class App extends Component {
           <Search />
         </section>
         <GifList />
+        <div className='collection-fix'></div>
         <Collection />
       </div>
     );

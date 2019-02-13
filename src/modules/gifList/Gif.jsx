@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addGifToCollection } from '../collection/CollectionActions';
 import './styles.scss';
 
 const BACKGROUND_IMAGES = [
@@ -46,14 +45,8 @@ export class Gif extends Component {
   }
 
   render() {
-    const {
-      gif,
-      addGifToCollectionDispatcher,
-    } = this.props;
-    const {
-      loading,
-      src
-    } = this.state;
+    const { gif } = this.props;
+    const { loading, src } = this.state;
     const imageProps = {
       src: this.getRandomBackground(),
       alt: gif.title,
@@ -67,7 +60,6 @@ export class Gif extends Component {
     }
     return (
       <div className='gif'>
-        <button disabled={loading} className='add-gif-button' onClick={() => addGifToCollectionDispatcher(gif)}>+</button>
         <img {...imageProps} />
       </div>
     );
@@ -78,8 +70,4 @@ const mapStateToProps = state => ({
   collection: state.collectionReducer.collection
 });
 
-const mapDispatchToProps = dispatch => ({
-  addGifToCollectionDispatcher: gif => dispatch(addGifToCollection(gif))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Gif);
+export default connect(mapStateToProps)(Gif);

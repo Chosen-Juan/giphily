@@ -1,19 +1,44 @@
-.collection {
+.collection-container {
   background-color: aliceblue;
   position: fixed;
   padding: 5px;
   bottom: 0;
   width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  .hidden {
+  height: 20vh;
+  .collection {
+    display: flex;
+    flex-direction: row-reverse;
+    z-index: 10;
+    overflow: hidden;
+    justify-content: flex-end;
+    .gif-wrap {
+      position: relative;
+      .gif-button {
+        position: absolute;
+        text-align: center;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        z-index: 30;
+        &:hover {
+          opacity: 1;
+          cursor: pointer;
+        }
+      }
+      .gif {
+        z-index: 20;
+        img {
+          display: inline-block;
+          width: auto;
+        }
+      }
+    }
 
-  }
-
-  .gif {
-    display: inline-block;
-    height: 5vh;
-    max-width: 100%;
   }
 }
