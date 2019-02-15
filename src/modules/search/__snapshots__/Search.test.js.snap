@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search should match snapshot 1`] = `
+<div
+  className="search-bar"
+>
+  <input
+    className="input"
+    onChange={[Function]}
+    placeholder="Search Giphy..."
+    type="text"
+    value=""
+  />
+</div>
+`;

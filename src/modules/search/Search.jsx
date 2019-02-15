@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { fetchGifs } from './SearchActions';
 import './styles.scss';
 
 export class Search extends Component {
+
+  static propTypes = {
+    fetchGifs: PropTypes.func.isRequired
+  };
+
   state = {
     query: ''
   };
 
-  constructor(props) {
-    super(props);
-    this.onInputChange = this.onInputChange.bind(this);
-  }
-
-  onInputChange(event) {
+  onInputChange = event => {
     const query = event.target.value;
     this.setState({ query });
     this.props.fetchGifs(query);

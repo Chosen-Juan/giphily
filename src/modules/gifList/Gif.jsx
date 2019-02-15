@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
 import './styles.scss';
 
@@ -8,24 +9,42 @@ const BACKGROUND_IMAGES = [
   'blue.jpg',
   'yellow.jpg'
 ];
-
+const imageProp = PropTypes.shape({
+  url: PropTypes.string
+});
 export class Gif extends Component {
   _isMounted = false;
   state = {
     loading: true,
     src: null
   };
-
-  constructor(props) {
-    super(props);
-    this.getRandomBackground = this.getRandomBackground.bind(this);
-  }
+  static propTypes = {
+    gif: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      images: PropTypes.shape({
+        original: imageProp.isRequired,
+        original_still: imageProp.isRequired
+      }).isRequired
+    }).isRequired
+  };
 
   componentDidMount() {
     this._isMounted = true;
-    const { gif } = this.props;
+    const { gif: { images: { original, original_still } } } = this.props;
+    const downloadingStill = new Image();
+    downloadingStill.src = original_still.url;
+    downloadingStill.onload = () => {
+      if(this._isMounted) {
+        this.setState({
+          loading: false,
+          src: this.state.src === null ? downloadingStill.src : this.state.src
+        });
+      }
+    };
+
     const downloadingGif = new Image();
-    downloadingGif.src = gif.images.original.url;
+    downloadingGif.src = original.url;
     downloadingGif.onload = () => {
       if(this._isMounted) {
         this.setState({
@@ -40,7 +59,7 @@ export class Gif extends Component {
     this._isMounted = false;
   }
 
-  getRandomBackground() {
+  getRandomBackground = () => {
     return BACKGROUND_IMAGES[Math.floor(Math.random() * BACKGROUND_IMAGES.length)];
   }
 
@@ -50,13 +69,11 @@ export class Gif extends Component {
     const imageProps = {
       src: this.getRandomBackground(),
       alt: gif.title,
-      height: `${gif.images.original.height}`,
       className: 'loading'
     };
     if(!loading) {
       imageProps.className = '';
       imageProps.src = src;
-      imageProps.height = 'auto';
     }
     return (
       <div className='gif'>

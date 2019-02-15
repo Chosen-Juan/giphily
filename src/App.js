@@ -13,9 +13,11 @@ class App extends Component {
           <h1 className='app-title'>Giphily</h1>
           <Search />
         </section>
-        <GifList />
+        <section>
+          <GifList />
+          <Collection />
+        </section>
         <div className='collection-fix'></div>
-        <Collection />
       </div>
     );
   }

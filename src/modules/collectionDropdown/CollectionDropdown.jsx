@@ -4,7 +4,9 @@ import './styles.scss';
 export class CollectionDropdown extends Component {
   render() {
     return (
-      <span className='collection-title'>Collections</span>
+      <div className='collection-dropdown'>
+        <span className='collection-title'>Collections</span>
+      </div>
     );
   }
 };

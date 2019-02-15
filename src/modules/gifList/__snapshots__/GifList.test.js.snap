@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GifList should match snapshot 1`] = `
+<div
+  className="gif-container"
+>
+  <div
+    className="gif-button"
+    key="abc"
+    onClick={[Function]}
+  >
+    <Connect(Gif)
+      gif={
+        Object {
+          "id": "abc",
+          "images": Object {
+            "original": Object {
+              "url": "://fakegif.gif",
+            },
+            "original_still": Object {
+              "url": "://fakegif.gif",
+            },
+          },
+          "title": "Fake gify",
+        }
+      }
+    />
+  </div>
+</div>
+`;

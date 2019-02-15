@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 
 import CollectionDropdown from '../../modules/collectionDropdown/CollectionDropdown';
 import Gif from '../gifList/Gif';
@@ -7,6 +8,15 @@ import { removeGifFromCollection } from './CollectionActions';
 import './styles.scss';
 
 export class Collection extends Component {
+
+  static propTypes = {
+    removeGifFromCollectionDispatcher: PropTypes.func.isRequired,
+    collection: PropTypes.arrayOf(Gif.WrappedComponent.propTypes.gif)
+  };
+
+  static defaultProps = {
+    collection: []
+  };
 
   renderGifs(collection) {
     return collection.map(gif => {

@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Gif from './Gif';
 import './styles.scss';
 import { addGifToCollection } from '../collection/CollectionActions';
 
 export class GifList extends Component {
+
+  static propTypes = {
+    gifList: PropTypes.arrayOf(Gif.WrappedComponent.propTypes.gif),
+    addGifToCollectionDispatcher: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    gifList: []
+  };
 
   constructor(props) {
     super(props);
@@ -15,8 +25,8 @@ export class GifList extends Component {
   renderGifs() {
     const { addGifToCollectionDispatcher } = this.props;
     return this.props.gifList.map(gif => {
-      return <div className='gif-button' onClick={() => addGifToCollectionDispatcher(gif)}>
-        <Gif gif={gif} key={gif.id} />
+      return <div key={gif.id} className='gif-button' onClick={() => addGifToCollectionDispatcher(gif)}>
+        <Gif gif={gif} />
       </div>;
     });
   }
