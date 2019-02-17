@@ -1,13 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CollectionDropdown should match snapshot 1`] = `
-<div
-  className="collection-dropdown"
->
-  <span
-    className="collection-title"
+<div>
+  <div
+    className="dropdown-container"
   >
-    Collections
-  </span>
+    <Dropdown
+      baseClassName="Dropdown"
+      className="collection-dropdown"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "Default",
+            "value": "abc-123",
+          },
+        ]
+      }
+      placeholder="Select a collection"
+      value={
+        Object {
+          "label": "Default",
+          "value": "abc-123",
+        }
+      }
+    />
+    <button
+      class="button is-primary is-outlined edit-button"
+      onClick={[Function]}
+    >
+      Edit
+    </button>
+  </div>
 </div>
 `;

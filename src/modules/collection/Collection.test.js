@@ -3,9 +3,16 @@ import { shallow } from 'enzyme';
 
 import { Collection } from './Collection';
 
-const removeGifSpy = jest.fn();
+const spy = jest.fn();
 const defaultProps = {
-  removeGifFromCollectionDispatcher: removeGifSpy,
+  removeGifFromCollectionDispatcher: spy,
+  createCollectionDispatcher: spy,
+  activeCollectionIndex: 0,
+  collections: [{
+    id: 'abc-123',
+    name: 'Default',
+    items: []
+  }]
 };
 
 

@@ -4,7 +4,22 @@ exports[`Collection should match snapshot 1`] = `
 <section
   className="collection-container"
 >
-  <CollectionDropdown />
+  <div
+    className="collection-header"
+  >
+    <span
+      className="subtitle"
+    >
+      Collections
+    </span>
+    <button
+      className="button is-primary is-outlined"
+      onClick={[Function]}
+    >
+      Add new
+    </button>
+  </div>
+  <Connect(CollectionDropdown) />
   <div
     className="collection"
   />

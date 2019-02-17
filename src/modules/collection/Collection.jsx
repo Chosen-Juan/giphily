@@ -4,14 +4,20 @@ import { PropTypes } from 'prop-types';
 
 import CollectionDropdown from '../../modules/collectionDropdown/CollectionDropdown';
 import Gif from '../gifList/Gif';
-import { removeGifFromCollection } from './CollectionActions';
+import { removeGifFromCollection, createCollection } from './CollectionActions';
 import './styles.scss';
 
 export class Collection extends Component {
 
   static propTypes = {
     removeGifFromCollectionDispatcher: PropTypes.func.isRequired,
-    collection: PropTypes.arrayOf(Gif.WrappedComponent.propTypes.gif)
+    activeCollectionIndex: PropTypes.number.isRequired,
+    createCollectionDispatcher: PropTypes.func.isRequired,
+    collections: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      items: PropTypes.arrayOf(Gif.WrappedComponent.propTypes.gif)
+    }).isRequired)
   };
 
   static defaultProps = {
@@ -35,22 +41,28 @@ export class Collection extends Component {
   }
 
   render() {
+    const activeCollection = this.props.collections[this.props.activeCollectionIndex];
     return (
       <section className='collection-container'>
+        <div className='collection-header'>
+          <span className='subtitle'>Collections</span>
+          <button className='button is-primary is-outlined' onClick={() => this.props.createCollectionDispatcher('New Collection')}>Add new</button>
+        </div>
         <CollectionDropdown />
         <div className='collection'>
-            {this.renderGifs(this.props.collection)}
+            {this.renderGifs(activeCollection.items)}
         </div>
       </section>
     );
   }
 };
 
-const mapStateToProps = ({ collectionReducer: { items } }) => ({
-  collection: items
+const mapStateToProps = ({ collectionReducer: { activeCollectionIndex, collections }}) => ({
+  collections, activeCollectionIndex
 });
 
 const mapDispatchToProps = dispatch => ({
+  createCollectionDispatcher: name => dispatch(createCollection(name)),
   removeGifFromCollectionDispatcher: index => dispatch(removeGifFromCollection(index))
 });
 

@@ -1,5 +1,61 @@
-.collection-title {
-  left: 1vw;
-  top: 1vh;
+// styles for external lib...
+.Dropdown-root {
   position: relative;
+  .Dropdown-control {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    padding: .3em;
+    transition: all 200ms ease;
+    margin-bottom: 1em;
+  }
+  .Dropdown-menu {
+    border-top: 1px solid #333;
+    overflow-y: auto;
+    position: absolute;
+    color: #ddd;
+    font-size: .8em;
+    padding: .2em;
+    background: #121212;
+    z-index: 50;
+    .Dropdown-option {
+      box-sizing: border-box;
+      color: #eee;
+      cursor: pointer;
+      display: block;
+      &:hover {
+        color: #fff;
+      }
+    }
+    .Dropdown-group > .Dropdown-title{
+      padding: 8px 10px;
+      color: #eee;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+  }
+}
+.is-selected {
+  color: #eee;
+}
+// end
+
+.collection-dropdown {
+  margin-bottom: 1em;
+  display: inline-block;
+}
+.dropdown-container {
+  display: flex;
+  .edit-button {
+    margin-left: auto;
+  }
+  .button {
+    margin-bottom: .5em;
+  }
+  .input {
+    margin-bottom: .5em;
+  }
 }

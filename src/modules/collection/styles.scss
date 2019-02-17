@@ -1,21 +1,28 @@
 .collection-container {
   background-color: #151515;
-  border-left: 1px solid #bbb;
+  border-left: 2px solid #333;
   min-height: 100vh;
-  display: inline-block;
-  position: fixed;
-  padding: 0.5vw;
-  margin-top: .47em;
-  top: auto;
+  height: 100vh;
+  padding-left: 1em;
+  padding-right: 1em;
   right: 0;
-  height: 100%;
+  float: right;
+  position: fixed;
+  top: 0;
   width: 19%;
-  align-self: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 3vh;
+  .collection-header {
+    display: flex;
+    .button {
+      margin-left: auto;
+    }
+  }
   .collection {
     display: flex;
     flex-direction: column-reverse;
     z-index: 10;
-    overflow: hidden;
     justify-content: flex-end;
     .gif-wrap {
       position: relative;

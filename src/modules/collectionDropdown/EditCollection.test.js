@@ -1,12 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { CollectionDropdown } from './CollectionDropdown';
+import { EditCollection } from './EditCollection';
 
 const spy = jest.fn();
 const defaultProps = {
   switchCollectionDispatcher: spy,
   activeCollectionIndex: 0,
+  closeCallback: spy,
+  deleteCollectionDispatcher: spy,
+  renameCollectionDispatcher: spy,
   collections: [{
     id: 'abc-123',
     name: 'Default',
@@ -14,9 +17,9 @@ const defaultProps = {
   }]
 };
 
-describe('CollectionDropdown', () => {
+describe('EditCollection', () => {
   it('should match snapshot', () => {
-    const collectionDropdown = shallow(<CollectionDropdown {...defaultProps} />);
-    expect(collectionDropdown).toMatchSnapshot();
+    const editCollection = shallow(<EditCollection {...defaultProps} />);
+    expect(editCollection).toMatchSnapshot();
   });
 });
